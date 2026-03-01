@@ -1,0 +1,91 @@
+---
+import config from '../config';
+import Section from './Section.astro';
+
+const languageColors: Record<string, string> = {
+  rust: '#DEA584',
+  c: '#555555',
+  'c++': '#F24A7D',
+  'c#': '#178701',
+  java: '#B17218',
+  python: '#3776AB',
+  php: '#4E5C95',
+  go: '#01ACD8',
+  typescript: '#3178C6',
+  javascript: '#F7DF1E',
+  html: '#E34C26',
+  css: '#1572B6',
+  scss: '#CC6699',
+  svelte: '#FF3E00',
+  vue: '#4FC08D',
+  astro: '#FF5A03',
+  react: '#61DAFB',
+  angular: '#DD0031'
+};
+
+type Repository = {
+  name: string;
+  description: string | null;
+  language: string | null;
+  url: string;
+  stars: number;
+  forks: number;
+};
+
+const repositories: Repository[] = await fetchRepositories();
+
+async function fetchRepositories() {
+  const response = await fetch(`https://api.github.com/users/${config.github}/repos`);
+  const data: any[] = await response.json();
+
+  return data
+    .sort((a, b) => b.stargazers_count - a.stargazers_count)
+    .slice(0, 6)
+    .map((repo) => ({
+      name: repo.name,
+      description: repo.description,
+      language: repo.language,
+      url: repo.html_url,
+      stars: repo.stargazers_count,
+      forks: repo.forks_count
+    }));
+}
+---
+
+<Section id="repositories" number="03" title="Open Source">
+  <div class="reveal">
+    {
+      repositories.map((repo, i) => (
+        <a
+          href={repo.url}
+          target="_blank"
+          class={`group hover:bg-surface/50 flex items-center justify-between border-b px-4 py-5 transition-colors ${i === 0 ? 'border-t' : ''}`}
+        >
+          <div class="flex min-w-0 items-center gap-4">
+            <span class="group-hover:text-accent truncate text-sm font-medium text-neutral-200 transition-colors">
+              {repo.name}
+            </span>
+            <span class="flex-1 truncate text-xs text-neutral-600">{repo.description}</span>
+          </div>
+
+          <div class="ml-2 flex shrink-0 items-center gap-4">
+            {repo.language && (
+              <span class="hidden items-center gap-1.5 text-xs text-neutral-500 sm:flex">
+                <span
+                  class="size-2 rounded-full"
+                  style={`background-color: ${languageColors[repo.language.toLowerCase()] || '#CBCBCB'}`}
+                />
+                {repo.language}
+              </span>
+            )}
+
+            <span class="inline-flex items-center gap-1 text-sm text-neutral-600">
+              <span class="text-yellow-500">★</span>
+              <span>{repo.stars}</span>
+            </span>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</Section>

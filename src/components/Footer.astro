@@ -1,0 +1,14 @@
+---
+import config from '../config';
+---
+
+<footer class="reveal mx-auto max-w-5xl px-6 py-12 md:px-10">
+  <p class="section-label">Get in touch</p>
+
+  <a
+    href={`mailto:${config.contactEmail}`}
+    class="font-display hover:text-accent mt-1 text-3xl text-neutral-200 transition-colors sm:text-5xl"
+  >
+    {config.contactEmail}
+  </a>
+</footer>
