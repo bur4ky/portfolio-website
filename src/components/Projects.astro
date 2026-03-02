@@ -5,11 +5,11 @@ import config from '../config';
 ---
 
 <Section id="projects" number="01" title="My Work">
-  <div class="divide-border space-y-20 divide-y">
+  <div class="space-y-12">
     {
       config.projects.map((project, i) => (
         <div
-          class={`${i % 2 !== 0 ? 'direction-rtl' : ''} reveal grid items-start gap-8 pb-16 last:pb-0 md:grid-cols-5`}
+          class={`${i % 2 !== 0 ? 'direction-rtl' : ''} reveal grid items-start gap-8 md:grid-cols-5`}
           style={`transition-delay: ${i * 0.15}s;`}
         >
           <div class={`overflow-hidden md:col-span-3 ${i % 2 !== 0 ? 'md:order-2' : ''}`}>

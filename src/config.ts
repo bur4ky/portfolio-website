@@ -10,27 +10,27 @@ import tailwindcss from './assets/tailwindcss.svg';
 
 export default {
   name: 'Burak',
-  about: 'A student and a developer from Turkey specialized in web development',
+  about: 'Web developer and student from Turkey, focused on building web applications.',
   profession: 'Full Stack Developer',
   contactEmail: 'contact@buraky.dev',
   github: 'bur4ky',
   meta: {
     title: 'Burak',
-    description: 'My portfolio website showcasing my projects and skills',
+    description: 'My portfolio website showing my web development projects and skills.',
     favicon: 'https://avatars.githubusercontent.com/u/59135244?size=64'
   },
   projects: [
     {
       title: 'Spitfire Launcher',
       description: 'A launcher app for Fortnite and Epic Games',
-      thumbnail: 'https://cdn.buraky.dev/banners/spitfire-launcher-min.png',
+      thumbnail: 'https://cdn.buraky.dev/banners/spitfire-launcher.png',
       repository: 'https://github.com/bur4ky/spitfire-launcher',
       url: 'https://rookie-spitfire.xyz/launcher',
       tags: ['Svelte', 'Tauri', 'Rust']
     },
     {
       title: 'VidGet',
-      description: 'Multi-platform video and audio downloader',
+      description: 'Image, video and audio downloader for multiple platforms.',
       thumbnail: 'https://cdn.buraky.dev/banners/vidget.png',
       repository: 'https://github.com/bur4ky/VidGet',
       tags: ['Svelte', 'Tailwind CSS']
