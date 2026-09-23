@@ -7,10 +7,7 @@ import config from '../config';
 <Section id="projects" number="01" title="My Work">
   <div class="space-y-12">
     {config.projects.map((project, i) => (
-      <div
-        class="reveal grid items-start gap-8 md:grid-cols-5"
-        style={`transition-delay: ${i * 0.15}s;`}
-      >
+      <div class="grid items-start gap-8 md:grid-cols-5">
         <div class={`overflow-hidden md:col-span-3 ${i % 2 !== 0 ? 'md:order-2' : ''}`}>
           <Image
             src={project.thumbnail}
